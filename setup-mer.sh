@@ -13,11 +13,11 @@ minfo "Fetching Mer"
 TARBALL=mer-i486-latest-sdk-rolling-chroot-armv7hl-sb2.tar.bz2
 # [ -f $TARBALL  ] || curl -k -O https://img.merproject.org/images/mer-sdk/$TARBALL || die
 [ -f $TARBALL  ] || cp /tmp/$TARBALL .
-
 minfo "Untaring Mer"
 # [ -f ${TARBALL}.untarred ] || sudo tar --numeric-owner -p -xjf "$MER_ROOT/$TARBALL" -C "$MER_ROOT/sdks/sdk" || die
 groupadd nemo && useradd -G nemo nemo
-[ -f ${TARBALL}.untarred ] || sudo tar -xjf "$MER_ROOT/$TARBALL" -C "$MER_ROOT/sdks/sdk" || die
+[ -f ${TARBALL}.untarred ] || sudo bzip2 -d mer-i486-latest-sdk-rolling-chroot-armv7hl-sb2.tar && tar -xf "$MER_ROOT/$TARBALL" -C "$MER_ROOT/sdks/sdk" || die
+rm -rf 
 chown -R nemo:nemo "$MER_ROOT/sdks/sdk"
 touch ${TARBALL}.untarred
 minfo "Done with Mer"

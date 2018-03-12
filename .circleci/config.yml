@@ -10,7 +10,7 @@ jobs:
           command: id && pwd
       - run:
           name: initenv
-          command: zypper install -y git wget curl which sudo tar unzip make gcc
+          command: zypper install -y git wget curl which sudo tar unzip make gcc bzip2
       - run:
           name: prepare
           command: mkdir /nexus5 && chmod +x *.sh
