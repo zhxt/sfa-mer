@@ -7,6 +7,7 @@ source ~/.hadk.env
 
 export PLATFORM_SDK_ROOT=$MER_ROOT
 mkdir -p $MER_ROOT/sdks/sfossdk ;
+mkdir -p $MER_ROOT/targets ;
 
 mchapter "4.2"
 cd "$MER_ROOT"
@@ -34,5 +35,15 @@ minfo "Done with Mer"
 #sudo zypper dup --from curlfix
 minfo "setup sb2 target"
 echo "$VENDOR $DEVICE"
-$PLATFORM_SDK_ROOT/sdks/sfossdk/mer-sdk-chroot sdk-manage target install $VENDOR-$DEVICE-armv7hl http://releases.sailfishos.org/sdk/latest/Jolla-latest-Sailfish_SDK_Target-armv7hl.tar.bz2 \
+TOOLINGS_DIR=$MER_ROOT/toolings/$VENDOR-$DEVICE
+mkdir -p $TOOLINGS_DIR
+
+minfo "Fetching toolings"
+curl -k -O http://releases.sailfishos.org/sdk/latest/Jolla-latest-Sailfish_SDK_Tooling-i486.tar.bz2
+
+minfo "Untaring toolings"
+tar --numeric-owner -p -xjf "$MER_ROOT/Jolla-latest-Sailfish_SDK_Tooling-i486.tar.bz2" -C $TOOLINGS_DIR
+ls $TOOLINGS_DIR
+
+echo 'c' | $PLATFORM_SDK_ROOT/sdks/sfossdk/mer-sdk-chroot sdk-manage target install $VENDOR-$DEVICE-armv7hl http://releases.sailfishos.org/sdk/latest/Jolla-latest-Sailfish_SDK_Target-armv7hl.tar.bz2 \
     --tooling SailfishOS-latest --tooling-url http://releases.sailfishos.org/sdk/latest/Jolla-latest-Sailfish_SDK_Tooling-i486.tar.bz2
