@@ -1,5 +1,7 @@
 language: bash
 
+sudo: required
+
 before_script:
     - mkdir nexus5 && chmod +x *.sh && pwd
 
