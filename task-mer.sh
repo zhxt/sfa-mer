@@ -12,6 +12,7 @@ source "$TOOLDIR/utility-functions.inc"
 [ -z "$MERSDK" ] && exit 0
 
 mchapter "4.3"
+ls -l $(which sudo)
 sudo zypper -n install android-tools createrepo zip || die
 
 # These commands are a tmp workaround of glitch when working with target:
