@@ -6,11 +6,11 @@ jobs:
     steps:
       - checkout
       - run:
-          name: init
-          command: zypper install -y git wget curl
+          name: initenv
+          command: zypper install -y git wget curl which createrepo android-tools zip
       - run:
-          name: test
-          command: ls
+          name: prepare
+          command: mkdir /nexus5 && chmod +x *.sh
       - run:
           name: build
-          command: mkdir /nexus5 && chmod +x *.sh && ./fullbuild.sh -mer-root /nexus5/mer-jan-t2 -android-root /nexus5/ubu-jan-t2 -branch hybris-11.0 -device hammerhead -vendor lge -dest /nexus5 -sfrelease 1.1.1.27  -extraname alpha5 -jobs 4 -dhdrepo "http://repo.merproject.org/obs/nemo:/devel:/hw:/lge:/hammerhead/sailfish_latest_armv7hl/" -mwrepo "http://repo.merproject.org/obs/nemo:/devel:/hw:/lge:/hammerhead/sailfish_latest_armv7hl/" -extrarepo x -target update10
+          command: ./fullbuild.sh -mer-root /nexus5/mer-jan-t2 -android-root /nexus5/ubu-jan-t2 -branch hybris-11.0 -device hammerhead -vendor lge -dest /nexus5 -sfrelease 1.1.1.27  -extraname alpha5 -jobs 4 -dhdrepo "http://repo.merproject.org/obs/nemo:/devel:/hw:/lge:/hammerhead/sailfish_latest_armv7hl/" -mwrepo "http://repo.merproject.org/obs/nemo:/devel:/hw:/lge:/hammerhead/sailfish_latest_armv7hl/" -extrarepo x -target update10
