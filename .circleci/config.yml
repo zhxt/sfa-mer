@@ -6,8 +6,11 @@ jobs:
     steps:
       - checkout
       - run:
+          name: test
+          command: id && pwd
+      - run:
           name: initenv
-          command: zypper install -y git wget curl which createrepo android-tools zip
+          command: zypper install -y git wget curl which sudo
       - run:
           name: prepare
           command: mkdir /nexus5 && chmod +x *.sh
