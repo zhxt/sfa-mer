@@ -5,21 +5,30 @@ source "$TOOLDIR/utility-functions.inc"
 
 source ~/.hadk.env
 
-mkdir -p "$MER_ROOT/sdks/sdk"
-
 mchapter "4.2"
 cd "$MER_ROOT"
 minfo "Fetching Mer"
-TARBALL=mer-i486-latest-sdk-rolling-chroot-armv7hl-sb2.tar.bz2
-[ -f $TARBALL  ] || curl -k -O https://img.merproject.org/images/mer-sdk/$TARBALL || die
+
+export PLATFORM_SDK_ROOT=$MER_ROOT
+sudo mkdir -p $PLATFORM_SDK_ROOT/sdks/sfossdk ;
+
+PLATFORM_SDK_URL=http://releases.sailfishos.org/sdk/installers/latest/
+TARBALL=Jolla-latest-SailfishOS_Platform_SDK_Chroot-i486.tar.bz2
+[ -f $TARBALL  ] || curl -k -O $PLATFORM_SDK_URL/$TARBALL || die
 
 minfo "Untaring Mer"
-[ -f ${TARBALL}.untarred ] || sudo tar --numeric-owner -p -xjf "$MER_ROOT/$TARBALL" -C "$MER_ROOT/sdks/sdk" || die
+[ -f ${TARBALL}.untarred ] || sudo tar --numeric-owner -p -xjf "$MER_ROOT/$TARBALL" -C "$MER_ROOT/sdks/sfossdk" || die
+
+echo "export PLATFORM_SDK_ROOT=$PLATFORM_SDK_ROOT" >> ~/.bashrc
+echo 'alias sfossdk=$PLATFORM_SDK_ROOT/sdks/sfossdk/mer-sdk-chroot' >> ~/.bashrc ; exec bash ;
+echo 'PS1="PlatformSDK $PS1"' > ~/.mersdk.profile ;
+echo '[ -d /etc/bash_completion.d ] && for i in /etc/bash_completion.d/*;do . $i;done'  >> ~/.mersdk.profile ;
+
 touch ${TARBALL}.untarred
 minfo "Done with Mer"
 
 # These commands are a tmp workaround of glitch when working with target:
-sudo zypper ar http://repo.merproject.org/obs/home:/sledge:/mer/latest_i486/ \
-curlfix
-sudo zypper ref curlfix
-sudo zypper dup --from curlfix
+#sudo zypper ar http://repo.merproject.org/obs/home:/sledge:/mer/latest_i486/ \
+#curlfix
+#sudo zypper ref curlfix
+#sudo zypper dup --from curlfix
