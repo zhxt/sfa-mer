@@ -11,12 +11,12 @@ mchapter "4.2"
 cd "$MER_ROOT"
 minfo "Fetching Mer"
 TARBALL=mer-i486-latest-sdk-rolling-chroot-armv7hl-sb2.tar.bz2
-# [ -f $TARBALL  ] || curl -k -O https://img.merproject.org/images/mer-sdk/$TARBALL || die
+[ -f $TARBALL  ] || curl -k -O https://img.merproject.org/images/mer-sdk/$TARBALL || die
 # [ -f $TARBALL  ] || cp /tmp/$TARBALL .
 minfo "Untaring Mer"
-# [ -f ${TARBALL}.untarred ] || sudo tar --numeric-owner -p -xjf "$MER_ROOT/$TARBALL" -C "$MER_ROOT/sdks/sdk" || die
-sudo groupadd nemo && sudo useradd -G nemo nemo
-[ -f ${TARBALL}.untarred ] || sudo bzip2 -d "/tmp/$TARBALL" && sudo tar --no-same-owner -jxf "/tmp/mer-i486-latest-sdk-rolling-chroot-armv7hl-sb2.tar" -C "$MER_ROOT/sdks/sdk" || die
+sudo groupadd nemo && sudo useradd -g nemo nemo
+[ -f ${TARBALL}.untarred ] || sudo tar --no-same-owner -xjf "$MER_ROOT/$TARBALL" -C "$MER_ROOT/sdks/sdk" || die
+# [ -f ${TARBALL}.untarred ] || sudo bzip2 -d "/tmp/$TARBALL" && sudo tar --no-same-owner -jxf "/tmp/mer-i486-latest-sdk-rolling-chroot-armv7hl-sb2.tar" -C "$MER_ROOT/sdks/sdk" || die
 sudo chown -R nemo:nemo "$MER_ROOT/sdks/sdk"
 touch ${TARBALL}.untarred
 minfo "Done with Mer"
