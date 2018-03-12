@@ -5,6 +5,8 @@ source "$TOOLDIR/utility-functions.inc"
 
 source ~/.hadk.env
 
+mkdir -p "$MER_ROOT/sdks/sfossdk"
+
 mchapter "4.2"
 cd "$MER_ROOT"
 minfo "Fetching Mer"
