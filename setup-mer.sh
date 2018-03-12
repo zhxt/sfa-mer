@@ -5,7 +5,7 @@ source "$TOOLDIR/utility-functions.inc"
 
 source ~/.hadk.env
 
-#export PLATFORM_SDK_ROOT=$MER_ROOT
+export PLATFORM_SDK_ROOT=$MER_ROOT
 mkdir -p $MER_ROOT/sdks/sfossdk ;
 
 mchapter "4.2"
@@ -32,3 +32,7 @@ minfo "Done with Mer"
 #curlfix
 #sudo zypper ref curlfix
 #sudo zypper dup --from curlfix
+minfo "setup sb2 target"
+echo "$VENDOR $DEVICE"
+$PLATFORM_SDK_ROOT/sdks/sfossdk/mer-sdk-chroot sdk-manage target install $VENDOR-$DEVICE-armv7hl http://releases.sailfishos.org/sdk/latest/Jolla-latest-Sailfish_SDK_Target-armv7hl.tar.bz2 \
+    --tooling SailfishOS-latest --tooling-url http://releases.sailfishos.org/sdk/latest/Jolla-latest-Sailfish_SDK_Tooling-i486.tar.bz2

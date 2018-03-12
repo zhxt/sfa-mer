@@ -48,7 +48,7 @@ ubu-chroot -r "$MER_ROOT/sdks/ubuntu" `pwd`/task-ubu.sh || die
 minfo "done ubuntu"
 
 mchapter "6. sb2 setup"
-./sb-setup.sh || die
+#./sb-setup.sh || die
 
 ./ahal.sh || die
 
