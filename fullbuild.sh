@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/bin/bash -x
+
 TOOLDIR="$(dirname `which $0`)"
 source "$TOOLDIR/utility-functions.inc"
 
