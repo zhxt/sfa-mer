@@ -19,7 +19,7 @@ touch ${TARBALL}.untarred
 minfo "Done with Mer"
 
 # These commands are a tmp workaround of glitch when working with target:
-sudo zypper ar http://repo.merproject.org/obs/home:/sledge:/mer/latest_i486/ \
-curlfix
-sudo zypper ref curlfix
-sudo zypper dup --from curlfix
+# sudo zypper ar http://repo.merproject.org/obs/home:/sledge:/mer/latest_i486/ \
+# curlfix
+# sudo zypper ref curlfix
+# sudo zypper dup --from curlfix
