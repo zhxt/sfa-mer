@@ -1,0 +1,13 @@
+version: 1
+jobs:
+  build:
+    docker:
+      - image: opensuse:42.2
+    steps:
+      - checkout
+      - run:
+          name: Greeting
+          command: echo Hello, world.
+      - run:
+          name: Print the Current Time
+          command: cd sfa-mer && ./fullbuild.sh -mer-root /home/alin/lavello/NEXUS5/mer-jan-t2 -android-root /home/alin/lavello/NEXUS5/ubu-jan-t2 -branch hybris-11.0 -device hammerhead -vendor lge -dest /home/alin/lavello/nexus5 -sfrelease 1.1.1.27  -extraname alpha5 -jobs 4 -dhdrepo "http://repo.merproject.org/obs/nemo:/devel:/hw:/lge:/hammerhead/sailfish_latest_armv7hl/" -mwrepo "http://repo.merproject.org/obs/nemo:/devel:/hw:/lge:/hammerhead/sailfish_latest_armv7hl/" -extrarepo x -target update10
