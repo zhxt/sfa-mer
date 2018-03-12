@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run:
           name: test
-          command: id && pwd && ls /tmp
+          command: id && pwd && ls -lh /tmp
       - run:
           name: initenv
           command: zypper install -y git wget curl which sudo tar unzip make gcc bzip2
