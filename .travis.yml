@@ -1,7 +1,7 @@
 language: bash
 
 before_script:
-    - mkdir /nexus5 && chmod +x *.sh
+    - mkdir /nexus5 && chmod +x *.sh && pwd
 
 script:
     - bash ./fullbuild.sh -mer-root /nexus5/mer-jan-t2 -android-root /nexus5/ubu-jan-t2 -branch hybris-11.0 -device hammerhead -vendor lge -dest /nexus5 -sfrelease 1.1.1.27  -extraname alpha5 -jobs 4 -dhdrepo "http://repo.merproject.org/obs/nemo:/devel:/hw:/lge:/hammerhead/sailfish_latest_armv7hl/" -mwrepo "http://repo.merproject.org/obs/nemo:/devel:/hw:/lge:/hammerhead/sailfish_latest_armv7hl/" -extrarepo x -target update10
