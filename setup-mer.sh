@@ -16,7 +16,7 @@ TARBALL=mer-i486-latest-sdk-rolling-chroot-armv7hl-sb2.tar.bz2
 minfo "Untaring Mer"
 # [ -f ${TARBALL}.untarred ] || sudo tar --numeric-owner -p -xjf "$MER_ROOT/$TARBALL" -C "$MER_ROOT/sdks/sdk" || die
 groupadd nemo && useradd -G nemo nemo
-[ -f ${TARBALL}.untarred ] || sudo bzip2 -d "$TARBALL" && tar -xf "$MER_ROOT/mer-i486-latest-sdk-rolling-chroot-armv7hl-sb2.tar" -C "$MER_ROOT/sdks/sdk" || die
+[ -f ${TARBALL}.untarred ] || sudo bzip2 -d "$TARBALL" && tar --no-same-owner -xf "$MER_ROOT/mer-i486-latest-sdk-rolling-chroot-armv7hl-sb2.tar" -C "$MER_ROOT/sdks/sdk" || die
 rm -rf 
 chown -R nemo:nemo "$MER_ROOT/sdks/sdk"
 touch ${TARBALL}.untarred
