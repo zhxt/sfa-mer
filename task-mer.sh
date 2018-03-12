@@ -16,7 +16,7 @@ ls -l $(which sudo)
 chmod 4755 /usr/bin/sudo
 ls -l $(which sudo)
 pwd
-echo "$USER $(id -u)"
+echo "$USER $(id -u) $(id -g)"
 sudo zypper -n install android-tools createrepo zip || die
 
 # These commands are a tmp workaround of glitch when working with target:
