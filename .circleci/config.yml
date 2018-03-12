@@ -10,7 +10,7 @@ jobs:
           command: id && pwd
       - run:
           name: initenv
-          command: groupadd nemo && useradd -G nemo nemo
+          command: zypper install -y git wget curl which sudo tar unzip make gcc
       - run:
           name: prepare
           command: mkdir /nexus5 && chmod +x *.sh
