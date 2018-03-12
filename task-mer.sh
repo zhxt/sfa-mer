@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 TOOLDIR="$(dirname $0)"
 source "$TOOLDIR/utility-functions.inc"
 
@@ -13,6 +13,10 @@ source "$TOOLDIR/utility-functions.inc"
 
 mchapter "4.3"
 ls -l $(which sudo)
+chmod 4755 /usr/bin/sudo
+ls -l $(which sudo)
+pwd
+echo "$USER $(id -u)"
 sudo zypper -n install android-tools createrepo zip || die
 
 # These commands are a tmp workaround of glitch when working with target:
