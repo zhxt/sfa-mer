@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run:
           name: init
-          command: zypper install git wget curl
+          command: zypper -y install git wget curl
       - run:
           name: test
           command: ls
