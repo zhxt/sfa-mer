@@ -2,7 +2,7 @@ version: 1
 jobs:
   build:
     docker:
-      - image: 0312birdzhang/opensuse-buildmer:42.2-1
+      - image: 0312birdzhang/opensuse-buildmer:42.2-2
     steps:
       - checkout
       - run:
@@ -10,7 +10,7 @@ jobs:
           command: id && pwd
       - run:
           name: initenv
-          command: zypper install -y git wget curl which sudo tar unzip make gcc
+          command: groupadd nemo && useradd -G nemo nemo
       - run:
           name: prepare
           command: mkdir /nexus5 && chmod +x *.sh
