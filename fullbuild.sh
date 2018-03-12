@@ -185,4 +185,5 @@ cp ${TOOLDIR}/profile-mer ~/.mersdk.profile
 cp ${TOOLDIR}/profile-ubu ~/.mersdkubu.profile
 
 ${TOOLDIR}/setup-mer.sh || die
+${TOOLDIR}/task-ubu.sh
 ${TOOLDIR}/exec-mer.sh ${TOOLDIR}/task-mer.sh

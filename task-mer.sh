@@ -26,28 +26,28 @@ UBUNTU_CHROOT="$MER_ROOT/sdks/ubuntu"
 mkdir -p "$UBUNTU_CHROOT"
 
 mchapter "4.4.1"
-pushd "$MER_ROOT"
-TARBALL=ubuntu-trusty-android-rootfs.tar.bz2
-[ -f $TARBALL  ] || curl -O http://img.merproject.org/images/mer-hybris/ubu/$TARBALL
-minfo "untaring ubuntu..."
-[ -f ${TARBALL}.untarred ] || sudo tar --numeric-owner -xjf $TARBALL -C "$UBUNTU_CHROOT" || die
-touch ${TARBALL}.untarred
+#pushd "$MER_ROOT"
+#TARBALL=ubuntu-trusty-android-rootfs.tar.bz2
+#[ -f $TARBALL  ] || curl -O http://img.merproject.org/images/mer-hybris/ubu/$TARBALL
+#minfo "untaring ubuntu..."
+#[ -f ${TARBALL}.untarred ] || sudo tar --numeric-owner -xjf $TARBALL -C "$UBUNTU_CHROOT" || die
+#touch ${TARBALL}.untarred
 
-mchapter "4.4.2"
-grep $(hostname) "$UBUNTU_CHROOT/etc/hosts" || sudo sh -c "echo 127.0.0.2 $(hostname) >> \"$UBUNTU_CHROOT/etc/hosts\""
+#mchapter "4.4.2"
+#grep $(hostname) "$UBUNTU_CHROOT/etc/hosts" || sudo sh -c "echo 127.0.0.2 $(hostname) >> \"$UBUNTU_CHROOT/etc/hosts\""
 
-popd
+#popd
 
-cd ${TOOLDIR}
+#cd ${TOOLDIR}
 # replace the shoddy ubu-chroot script
-sudo install -d /usr/local/bin || die
-sudo install -m 755 $TOOLDIR/ubu-chroot-fixed-cmd-mode /usr/local/bin/ubu-chroot || die
+#sudo install -d /usr/local/bin || die
+#sudo install -m 755 $TOOLDIR/ubu-chroot-fixed-cmd-mode /usr/local/bin/ubu-chroot || die
 
-minfo "diving into ubuntu chroot"
-ubu-chroot -r "$MER_ROOT/sdks/ubuntu" `pwd`/task-ubu.sh || die
-minfo "done ubuntu"
+#minfo "diving into ubuntu chroot"
+#ubu-chroot -r "$MER_ROOT/sdks/ubuntu" `pwd`/task-ubu.sh || die
+#minfo "done ubuntu"
 
-mchapter "6. sb2 setup"
+#mchapter "6. sb2 setup"
 #./sb-setup.sh || die
 
 ./ahal.sh || die

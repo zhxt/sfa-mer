@@ -11,12 +11,12 @@ source "$TOOLDIR/utility-functions.inc"
 
 source ~/.hadk.env
 
-[ -z "$MERSDKUBU" ] && "$TOOLDIR"/exec-mer.sh ubu-chroot -r "$MER_ROOT/sdks/ubuntu" $0
-[ -z "$MERSDKUBU" ] && exit 0
+#[ -z "$MERSDKUBU" ] && "$TOOLDIR"/exec-mer.sh ubu-chroot -r "$MER_ROOT/sdks/ubuntu" $0
+#[ -z "$MERSDKUBU" ] && exit 0
 
 # install software in chroot
-minfo "Installing additional tools for the Ubuntu chroot"
-sudo apt-get install -y unzip bsdmainutils
+#minfo "Installing additional tools for the Ubuntu chroot"
+#sudo apt-get install -y unzip bsdmainutils
 
 mkdir -p ~/bin
 [ -f ~/bin/repo ] || curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
