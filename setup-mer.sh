@@ -5,14 +5,12 @@ source "$TOOLDIR/utility-functions.inc"
 
 source ~/.hadk.env
 
-mkdir -p "$MER_ROOT/sdks/sfossdk"
+#export PLATFORM_SDK_ROOT=$MER_ROOT
+mkdir -p $MER_ROOT/sdks/sfossdk ;
 
 mchapter "4.2"
 cd "$MER_ROOT"
 minfo "Fetching Mer"
-
-export PLATFORM_SDK_ROOT=$MER_ROOT
-sudo mkdir -p $PLATFORM_SDK_ROOT/sdks/sfossdk ;
 
 PLATFORM_SDK_URL=http://releases.sailfishos.org/sdk/installers/latest/
 TARBALL=Jolla-latest-SailfishOS_Platform_SDK_Chroot-i486.tar.bz2
@@ -21,10 +19,10 @@ TARBALL=Jolla-latest-SailfishOS_Platform_SDK_Chroot-i486.tar.bz2
 minfo "Untaring Mer"
 [ -f ${TARBALL}.untarred ] || sudo tar --numeric-owner -p -xjf "$MER_ROOT/$TARBALL" -C "$MER_ROOT/sdks/sfossdk" || die
 
-echo "export PLATFORM_SDK_ROOT=$PLATFORM_SDK_ROOT" >> ~/.bashrc
-echo 'alias sfossdk=$PLATFORM_SDK_ROOT/sdks/sfossdk/mer-sdk-chroot' >> ~/.bashrc ; exec bash ;
-echo 'PS1="PlatformSDK $PS1"' > ~/.mersdk.profile ;
-echo '[ -d /etc/bash_completion.d ] && for i in /etc/bash_completion.d/*;do . $i;done'  >> ~/.mersdk.profile ;
+#echo "export PLATFORM_SDK_ROOT=$PLATFORM_SDK_ROOT" >> ~/.bashrc
+#echo 'alias sfossdk=$PLATFORM_SDK_ROOT/sdks/sfossdk/mer-sdk-chroot' >> ~/.bashrc ; exec bash ;
+#echo 'PS1="PlatformSDK $PS1"' > ~/.mersdk.profile ;
+#echo '[ -d /etc/bash_completion.d ] && for i in /etc/bash_completion.d/*;do . $i;done'  >> ~/.mersdk.profile ;
 
 touch ${TARBALL}.untarred
 minfo "Done with Mer"

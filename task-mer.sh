@@ -15,10 +15,10 @@ mchapter "4.3"
 sudo zypper -n install android-tools createrepo zip || die
 
 # These commands are a tmp workaround of glitch when working with target:
-sudo zypper ar http://repo.merproject.org/obs/home:/sledge:/mer/latest_i486/ \
-curlfix
-sudo zypper ref curlfix
-sudo zypper dup --from curlfix
+#sudo zypper ar http://repo.merproject.org/obs/home:/sledge:/mer/latest_i486/ \
+#curlfix
+#sudo zypper ref curlfix
+#sudo zypper dup --from curlfix
 
 source ~/.hadk.env
 minfo "setting up ubuntu chroot"
